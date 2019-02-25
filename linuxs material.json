@@ -1,0 +1,387 @@
+
+create log file
+----------------
+vi /tmp/temp.log
+ls -ltr &>/tmp/temp.log
+
+old logfiles
+ls -itr &>>/tmp/temp.log
+
+
+how to check for ram size
+ANS:ls -ltr
+
+Command1 && Command2 --> both should success
+
+Command1 || Command2 --> atleast one success you can call it success
+
+uname                              =severname
+uname -r                           =details
+uname -a                           =server total details
+whoami                             =user
+who am i                           =user details
+who (or)w                          =All login details
+pwd                                =present working directory
+ls                                 = list of files
+ls -l                              =list 
+ls-i                               = (how to check inode number)
+date                               =date check
+cal 2019                           =calendar
+                  vi editer
+1)insert mode                       =i
+2)excution mode                     =esc :!q
+3)command mode                      =aperater
+esc dd                              =delete line
+esc 3dd                             =3 lines delete
+esc yy                              = copy
+p                                   =past
+G                                   =below
+H                                    =top
+dw                                   =word delete
+x                                    =one bt one line delete
+r                                    =word replace
+R                                    =one latter all replace
+Shift $                              =line END
+o                                    = empty above new line
+O                                    =Empty below new line 
+esc /search                          = word search 
+:q!  
+                     Remove
+rm -i                                 =remove file y/N
+rm -rf                                =remove
+rm -rf *                              =All remove 
+                      Create
+touch venkat                          =create file
+mkdir venkat                          =create directory
+mkdir -p ven/kat/nag                  =Create nested directory
+                        permission
+rwx   rwx    rwx
+user  group  other	
+
+r=4 w=2 x=1
+777 full permission in directory
+666 full permission in File
+644 defult permission in fille
+755 defult permission in directory
+umask value 0022
+chmod +r file name
+chmod -r file name
+what is scripts =group of command
+
+ 24 2 video
+                              File copy/move command
+cp filename /opt/venkat		 File
+cp -rf directory name /opt/venkat		
+
+mv test devops (test filename change devops).
+
+head /etc/passwd 
+head -4/etc/passwd 	
+tail /etc/passwd
+
+ps -eps -ef                    how to run the background servers
+grep                           global regular expression
+grep "Wordname" dirctor
+ps -ef |grep tomcat 
+ps -ef |grep tomcat |wc -i
+wc means                       word count
+
+top =                            server permamence
+kill -9 8756
+df 
+df -h                           fill system storage ex:5%
+du -sh /root 
+rpm -qa wget                   (search for install or not) 
+wget and curl
+
+tar -xvf
+tar -tvf (tar files display)
+tar -cvf aws.tar apache-maven  (ex:aws.tar in apache-maven)
+ls -R (each directory path show)
+
+find / -name "filename"  (any directory searche for filename)
+fine / -name "filename" -type -f
+fine / -name "filename" -type -d
+find / -mtime +15 -type f  (15 date above files)
+find / -mtime -15 -type f  (15 date below files)
+find / -perm 777           (only 777 permission file/directory)
+
+                
+				Shell Scripting
+				
+Shell Scripting is a Group of commands
+
+cat /etc/shells
+or
+chsh -latter
+
+echo $SHELL locaction
+
+vi shell.sh
+./shell.sh
+permission denied
+chmod +x script.sh  Exguration permission 
+chmod -x script.sh  excution permission Remove
+ls -l
+
+bash script.sh
+source script.sh
+
+1)
+var1=Hello
+var2=World
+echo "$var1 $var2"
+echo "hello"
+
+$0  is script name
+$$ script PID number
+
+2)
+echo "this script name is :$0"
+echo "1st parameter is :$1"
+echo "2nd parameter is :$2"
+echo "script pid is :$$"
+echo "total no.of arguments in script :$0"
+
+output:
+   bash /v5.sh 10 acd 5a
+   
+echo this script name is :./v5.sh
+echo 1st parameter is :10
+echo 2nd parameter is :acd
+echo script pid is :8958
+echo total no.of arguments in script :3
+
+3)
+#!/bin/bash
+echo "enter your name:"
+read name
+echo "company name:"
+read company
+you have new mail in /var/spool/mall/root
+
+output:
+ enter your name:
+ venkat
+ enter company name:
+ peppty
+you have new mail in /var/spool/mall/root
+
+4) 
+#!/bin/bash
+echo "enter your name:"
+read a
+echo "company name:"
+read b
+echo "your Name": $a,company Name: $b"
+echo "Thank you!"
+  output:
+  enter your Name
+  venkatnag
+  Enter company Name
+  Thank you!
+ you have new mail in /var/spool/mall/root
+
+ 5)IF condition (only one condition)
+#!/bin/bash
+echo "Enter your Age:"
+read age
+if [$age -ge 18]
+then
+echo "your eligible for voting"
+else
+echo "your not eligible for voting"
+echo "Thank you!."
+fi
+
+output:
+
+Enter your age
+25
+your eligible for voting
+you have new mail in /var/spool/mall/root
+
+Enter your age
+10
+your not eligible for voting				
+Thank you 
+
+6)if else condition
+
+#!/bin/bash
+echo "Select traffic signals RED GrEEN Yellow"
+read colour
+if [ $colour ==RED ];
+then
+echo "Red colour indicates Stop"
+elif [ $colour ==GREEN ];
+then
+echo "GREEN colour indicates start"
+elif [ $colour ==YELLOW ];
+else
+echo "sorry this colour is not avalible in our script!"
+echo "Thank you!!.."
+fi
+
+output:
+select traffic signals RED GREEN YELLOW
+GREEN
+GREEN colour indicates Stop
+
+11)For loop
+
+#!/bin/bash
+for i in 1 2 3 4 5 6 
+do
+touch file$if
+done
+
+output:
+file1 file2 file3 file4 file5 file6
+
+EX:
+
+#!/bin/bash
+for i in 1 2 3 4 5 6 
+do
+rm -rf file$i
+done
+
+EX:
+#!/bin/bash
+for i in {1.....10}
+do
+touch file$if
+done				
+
+12)
+ #!/bin/bash
+ for table in {2..20..2}
+ do 
+ echo "Table for 2: $table"
+ done
+ 
+ output:
+ Table for 2: 2
+  Table for 2: 4
+   Table for 2: 6
+    Table for 2: 8
+	 Table for 2: 10
+	  Table for 2: 12
+	   Table for 2: 14
+	    Table for 2: 16 
+		Table for 2: 18
+		 Table for 2: 20
+		 
+13		 
+#!/bin/bash
+for (( i=20; i>=2; i--))
+do
+echo "$i"
+done
+
+output:
+20 19 18 17 16 15 14 13 12 11 9 8 7 6 5 4 3 2 1
+
+#!/bin/bash
+for (( i=20; i>=2 i++))
+do
+echo "$i"
+done
+
+14)while loop  (false loop terminate)
+  i=10;
+  while [ $1 -ge 5 ];
+  do
+  echo "Reverse order number $i"
+  let i--;
+  done
+  
+  output
+  
+  Reverse order number 10
+  Reverse order number 9
+  Reverse order number 8 
+  Reverse order number 7
+  Reverse order number 6
+  Reverse order number 5
+  
+  15)until   (true loop terminate)
+  i=5;
+  until [ $i -ge 15 ];
+  do
+  echo "number $1"
+  i=$(( i+1 ))
+  done
+  
+  16)function call
+  #!/bin/bash
+  function script() {
+  echo "thid is function script"
+  }
+  script
+  script
+  script
+  script
+  
+  output
+  
+  this is function script
+  this is function script
+  this is function script
+  this is function script
+		 
+		
+17)function paramerer
+#!/bin/bash
+function welcome () {
+echo "welcome Devops trining $1 $5 $2"
+}
+welcome abc 10 4 def xyz sj
+welcome
+welcome 10 20 30 a b c d e f 
+
+output:
+
+welcome devops trining abc xyz 10
+welcome
+welcome devops trining 10 b 20
+
+18)pateran
+#!/bin/bash
+#states of citys.
+echo "choose city name Thirupathi Hyd Bangalore"
+read city
+case $city in
+Thirupathi) echo "it's belongs to AP"
+;;
+Hyd) echo "it's belongs to TS"
+;;
+Bangulore) echo "it's belongs to KA"
+;;
+*) echo "unknow states"
+;;
+esac
+
+output:
+
+Chose city name Thirupathi Hyd Bangulore
+khammam
+unkown  State
+
+
+
+1)#!/bin/bash
+ a=10
+ b=20
+ 
+ if [ $a = $b ]; or if [ $a -eq $b]
+ then
+ echo "Condition is true"
+ else 
+ echo "Condition is false"
+ fi
+ 
+ 2)
+ 
+
